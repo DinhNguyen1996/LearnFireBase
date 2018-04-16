@@ -52,6 +52,8 @@ public class StudentActivity extends AppCompatActivity implements View.OnClickLi
 
         btnCreate = findViewById(R.id.btn);
         btnCreate.setOnClickListener(this);
+
+        loadData();
     }
 
     @Override
@@ -67,27 +69,31 @@ public class StudentActivity extends AppCompatActivity implements View.OnClickLi
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
                     if (task.isSuccessful()){
-                        mData.child("Student").addValueEventListener(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(DataSnapshot dataSnapshot) {
-                                if (!dsStudent.isEmpty()){
-                                    dsStudent.clear();
-                                }
-                                for (DataSnapshot item : dataSnapshot.getChildren()){
-                                    dsStudent.add(item.getValue(Student.class));
-                                }
-                                loadStudentSuccess();
-                            }
-
-                            @Override
-                            public void onCancelled(DatabaseError databaseError) {
-
-                            }
-                        });
+                        loadData();
                     }
                 }
             });
         }
+    }
+
+    private void loadData() {
+        mData.child("Student").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (!dsStudent.isEmpty()){
+                    dsStudent.clear();
+                }
+                for (DataSnapshot item : dataSnapshot.getChildren()){
+                    dsStudent.add(item.getValue(Student.class));
+                }
+                loadStudentSuccess();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 
     private void loadStudentSuccess() {
