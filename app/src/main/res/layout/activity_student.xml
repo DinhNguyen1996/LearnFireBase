@@ -21,13 +21,39 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/large"/>
 
-    <Button
-        android:id="@+id/btn"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/large"
-        android:layout_gravity="center"
-        android:text="Create"/>
+        android:layout_margin="2dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/large"
+            android:layout_gravity="left"
+            android:text="Create"/>
+
+        <Button
+            android:id="@+id/btn_xoa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/large"
+            android:layout_gravity="right"
+            android:text="Delete"/>
+
+        <Button
+            android:id="@+id/btn_sua"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/large"
+            android:layout_gravity="right"
+            android:text="Edit"/>
+
+
+    </LinearLayout>
+
 
     <ListView
         android:id="@+id/list_dssv"
